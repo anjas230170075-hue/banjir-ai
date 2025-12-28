@@ -8,8 +8,14 @@ import requests
 # CONFIG
 # =========================
 import os
-API_KEY = os.getenv("a52c78ddcc6b54a4451d7eec3ec7328d")
+
+API_KEY = os.getenv("OPENWEATHER_API_KEY")
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
+
+if not API_KEY:
+    st.error("OPENWEATHER_API_KEY belum diset di Streamlit Secrets")
+    st.stop()
+
 
 st.set_page_config(
     page_title="BanjirAI",
@@ -261,3 +267,4 @@ with right:
     st.markdown('</div>', unsafe_allow_html=True)
 
 st.caption("© 2025 | BanjirAI — Machine Learning + OpenWeather")
+
